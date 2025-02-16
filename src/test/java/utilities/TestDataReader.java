@@ -5,10 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.Set;
-
-import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -95,5 +92,32 @@ public class TestDataReader {
 			finalObject[j][0] = finalTable;
 		}
 		return finalObject;
+	}
+
+	/*to merge data wrt policy numbers in test data*/
+	public static synchronized Object[][] mergeData(Object[][] obj1, Object[][] obj2){
+		Object[][] finalObject = new Object[obj1.length][1];
+		for(int counter = 0; counter<obj1.length; counter++){
+			Hashtable<String, String> table1 = (Hashtable)obj1[counter][0];
+			String policyNumber = table1.get("Policy_Number_Txt");
+			Hashtable<String, String> table2 = (Hashtable)findCorrespondingTable(obj2, policyNumber);
+			Set<String> keys = table2.keySet();
+			for(String key: keys){
+				String value = table2.get(key);
+				table1.put(key, value);
+			}
+			finalObject[counter][0] = table1;
+		}
+		return finalObject;
+	}
+
+	public static synchronized Hashtable<String, String> findCorrespondingTable(Object[][] obj, String policyNumber){
+		for(int counter = 0; counter<obj.length; counter++){
+			Hashtable<String, String> table1 = (Hashtable)obj[counter][0];
+			if(policyNumber.equalsIgnoreCase(table1.get("Policy_Number_Txt"))){
+				return table1;
+			}
+		}
+		return new Hashtable<String, String>();
 	}
 }

@@ -3,31 +3,25 @@ package testcase;
 import java.io.IOException;
 import java.util.Hashtable;
 
+import base.ActionEngineWeb;
 import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import base.BaseTest;
+import base.TestEngineWeb;
 import utilities.TestDataReader;
 
-public class LoginTestCase extends BaseTest{
+public class LoginTestCase extends TestEngineWeb {
 
 	
 	private Object[][] getTestDataFor_Login() throws IOException {
-		return TestDataReader.readTestData("Test7","Login", BaseTest.TestDataSheet1);
+		return TestDataReader.readTestData("Test7","Login", ActionEngineWeb.TestDataSheet1);
 	}
-	private Object[][] getTestDataFor_Sheet1() throws IOException {
-		return TestDataReader.readTestData("Test7","Sheet1", BaseTest.TestDataSheet1);
-	}
-	private Object[][] getTestDataFor_Sheet2() throws IOException {
-		return TestDataReader.readTestData("Test7","Sheet2", BaseTest.TestDataSheet1);
-	}
-	
-	
+
 	@DataProvider
 	private Object[][] getTestData() throws IOException{
 		System.out.println("===================================== Test data reading started ================================================");
-		return TestDataReader.getAllData(getTestDataFor_Login(), getTestDataFor_Sheet1(),getTestDataFor_Sheet2());
+		return TestDataReader.getAllData(getTestDataFor_Login());
 	}
 	
 	@Test(dataProvider = "getTestData")
