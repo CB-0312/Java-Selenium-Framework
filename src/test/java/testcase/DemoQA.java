@@ -22,7 +22,7 @@ public class DemoQA extends TestEngineWeb {
 
 	@DataProvider
 	private Object[][] getTestData() throws IOException{
-		System.out.println("===================================== Test data reading started ================================================");
+		System.out.println("====================== Test data reading started ===============================");
 		return TestDataReader.getAllData(getTestDataFor_Login(),getTestDataFor_DemoQa());
 	}
 	
