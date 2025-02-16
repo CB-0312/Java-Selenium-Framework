@@ -2,7 +2,8 @@
 /shelf/
 /workspace.xml
 /.idea/
-/target/*
+/target/
+/Results/
 /test-output/
 
 
