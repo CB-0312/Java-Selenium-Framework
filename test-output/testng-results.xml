@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-12-21T12:57:54 CST" name="Default suite" finished-at="2024-12-21T12:58:20 CST" duration-ms="26305">
+    <groups>
+    </groups>
+    <test started-at="2024-12-21T12:57:54 CST" name="Default test" finished-at="2024-12-21T12:58:20 CST" duration-ms="26305">
+      <class name="testcase.LoginTestCase">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcase.LoginTestCase@544fa968]" started-at="2024-12-21T12:57:54 CST" name="setup" finished-at="2024-12-21T12:57:58 CST" duration-ms="3963" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="LoginTest(java.util.Hashtable)[pri:0, instance:testcase.LoginTestCase@544fa968]" started-at="2024-12-21T12:57:58 CST" name="LoginTest" data-provider="getTestData" finished-at="2024-12-21T12:58:20 CST" duration-ms="21524" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Col5=Row7, Column2=Row4, Col4=Row6, Column1=Row3, Col3=Row5, Col2=Row4, Password=9880062710@cC, Col1=Row3, Username=cbabu1021@gmail.com, Col10=Row12, TestId=Test7, Password2=9880062710@cC, Password1=9880062710@cC, Column9=Row11, Column8=Row10, Column7=Row9, Col9=Row11, Column6=Row8, Col8=Row10, Column5=Row7, Col7=Row9, Column4=Row6, Column10=Row12, Col6=Row8, Column3=Row5}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:testcase.LoginTestCase@544fa968]" started-at="2024-12-21T12:58:20 CST" name="quit" finished-at="2024-12-21T12:58:20 CST" duration-ms="127" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- testcase.LoginTestCase -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
