@@ -94,7 +94,7 @@ public class TestEngineWeb {
 
 		LOCATION_CLIENT_LOGO = ReporterConstants.PURE_LOCATION_CLIENT_LOGO;
 		LOG.info("Assigning event firing webdriver instance to driver");
-		LOG.info("WebDriver ::: " + this.WebDriver.toString());
+//		LOG.info("WebDriver ::: " + this.WebDriver.toString());
 		LOG.info("Assigned event firing webdriver instance to driver");
 		LOG.info("eventfiring driver ::: " + driver.toString());
 
