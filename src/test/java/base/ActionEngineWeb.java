@@ -19,8 +19,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 import reports.ReporterConstants;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -476,7 +480,7 @@ public class ActionEngineWeb extends TestEngineWeb {
 			LOG.info("Locator is clickable :: " + locatorName);
 			LOG.info("Available values:::");
 			List<WebElement> elems = driver.findElement(locator).findElements(By.tagName("option"));
-			if(elems.size() == 0)
+			if(elems.isEmpty())
 				reporter.SuccessReport("No Values available for ", locatorName);
 			for(int i = 0; i < elems.size(); i++){
 				LOG.info(i + " :: " + elems.get(i).getText());
@@ -989,7 +993,6 @@ public class ActionEngineWeb extends TestEngineWeb {
 			LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 			status = true;
 		}  catch (Exception e) {
-			status = false;
 			LOG.info(e.getMessage());
 			reporter.failureReport("Enter text in :: " + locatorName, msgTypeFailure + keys.toString() +" Due to: "+ e.getMessage(), driver);
 		}
@@ -1144,7 +1147,7 @@ public class ActionEngineWeb extends TestEngineWeb {
 		boolean bValue = false;
 		try {
 			for (int i = 0; i < 200; i++) {
-				if (driver.findElements(locator).size() > 0) {
+				if (!driver.findElements(locator).isEmpty()) {
 					flag = true;
 					bValue = true;
 					break;
@@ -1591,13 +1594,8 @@ public class ActionEngineWeb extends TestEngineWeb {
 	/**
 	 * methodName: clickUntilByProperty
 	 * description: Clicking web element until property value exists
-	 * date: 06/21/2017
 	 * param: click locator, propertyName, propertyValue for comparision,locatorName for reporting
 	 * return: void
-	 * author: GallopAuthor004
-	 * Updated on:06/21/2017
-	 * Updated By:GallopAuthor004
-	 * throws: Throwable
 	 */
 	public boolean clickUntilByProperty(By locator, String propertyName, String propertyValue, String locatorName) throws Throwable {
 		boolean flag = false;
@@ -3025,7 +3023,7 @@ public class ActionEngineWeb extends TestEngineWeb {
 
 		//First check that JQuery is defined on the page. If it is, then wait AJAX
 		Boolean jQueryDefined = (Boolean) jsExec.executeScript("return typeof jQuery != 'undefined'");
-		if (jQueryDefined == true) {
+		if (jQueryDefined) {
 			//Pre Wait for stability
 			Thread.sleep(500);
 
