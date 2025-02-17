@@ -2,6 +2,8 @@ package base;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -35,11 +37,15 @@ public class TestEngineWeb {
 	public static String platformName = null;
 	public static String environment = null;
 	public static String version = null;
-
+	public String suiteStartTime = null;
 
 	@BeforeSuite
 	public void setup() throws IOException {
 		startTime = System.currentTimeMillis();
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd_MMM_yyyy hh mm ss SSS");
+		String formattedDate = sdf.format(date);
+		suiteStartTime = formattedDate.replace(":", "_").replace(" ", "_");
 		if (driver == null) {
 			fr = new FileReader(System.getProperty("user.dir") + "/src/test/resources/configfiles/Config.properties");
 			prop.load(fr);
